@@ -25,35 +25,21 @@ function newItemSubmit() {
   });
 };
 
-
 newItemSubmit();
-
 
 
 
 console.log('hello world');
 
+function removeItemFromList() {
+    $('.shopping-item-delete').on('click', '#shopping-list-item', function(event){ 
+      console.log('inside the inside function');
+     $(event.currentTarget).closest('button').remove();
 
-// $('button')
-// use .submit(), preventDefault(), toggleClass(), closest()
+      // const deletedItem= $(event.target).find($('.shopping-list-item')).val();
+      // deletedItem.remove(); 
+        })
+        console.log('please work');
+    }
 
-// $('button').click(function() { 
-//     let item = $('#shopping-list').val(); 
-//     $('#shopping-list').append( <li> 
-//         <span class="shopping-item">${userEntry}</span> 
-//         <div class="shopping-item-controls"> 
-//         <button class="shopping-item-toggle"> 
-//             <span class="button-label">check</span></button> 
-//             <button class="shopping-item-delete"> <span class="button-label">delete</span> </button> 
-//             </div></li>) });
-
-
-
-// function removeItemFromList(item) {
-//     $('.shopping-list-delete').click(function()
-//         { 
-//         const deletedItem= $('.shopping-list-item').val(); 
-//         ${deletedItem}.remove(); 
-//         })
-//     }
-
+removeItemFromList();
