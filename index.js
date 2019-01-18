@@ -13,33 +13,35 @@ function newItemSubmit() {
   $('#js-shopping-list-form').submit(event => {
     event.preventDefault();
     const userEntry = $(event.currentTarget).find('#shopping-list-entry').val();
-    $('.shopping-list').append(`<li> 
+    $('.shopping-list').append(`
+      <li> 
         <span class="shopping-item">${userEntry}</span> 
         <div class="shopping-item-controls"> 
-        <button class="shopping-item-toggle"> 
-            <span class="button-label">check</span></button> 
-            <button class="shopping-item-delete"> <span class="button-label">delete</span> </button> 
-            </div></li>`);
-    // userEntry.val('');
+          <button class="shopping-item-toggle"> 
+            <span class="button-label">check</span>
+          </button> 
+          <button class="shopping-item-delete">
+            <span class="button-label">delete</span>
+          </button> 
+        </div>
+      </li>`);
     console.log(userEntry);
   });
 };
-
 newItemSubmit();
 
 
-
-console.log('hello world');
-
 function removeItemFromList() {
-    $('.shopping-item-delete').on('click', '#shopping-list-item', function(event){ 
-      console.log('inside the inside function');
-     $(event.currentTarget).closest('button').remove();
+    $('.shopping-list').on('click', '.shopping-item-delete', event =>{ 
 
-      // const deletedItem= $(event.target).find($('.shopping-list-item')).val();
-      // deletedItem.remove(); 
-        })
-        console.log('please work');
-    }
-
+      $(event.currentTarget).parent().parent().remove();
+    });
+        }
 removeItemFromList();
+
+function checkThroughItem() {
+  $('.shopping-list').on('click', '.shopping-item-toggle', event => {
+    $(event.currentTarget).parent().siblings('.shopping-item').toggleClass('shopping-item__checked');
+  });
+}
+checkThroughItem();
